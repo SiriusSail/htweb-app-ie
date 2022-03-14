@@ -8,6 +8,17 @@
     "lint": "eslint {src,mock,tests}/**/*.{ts,tsx} --fix",
     "precommit": "lint-staged"
   },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,jsx,less,md,json}": [
+      "prettier --write"
+    ],
+    "*.ts?(x)": [
+      "prettier --parser=typescript --write"
+    ]
+  },
   "dependencies": {
     "antd": "^3.19.5",
     "react": "^16.8.6",
@@ -42,16 +53,6 @@
     "umi": "^2.9.0",
     "umi-plugin-react": "^1.15.8",
     "umi-types": "^0.3.0"
-  },
-  "lint-staged": {
-    "*.{ts,tsx}": [
-      "eslint --fix",
-      "git add"
-    ],
-    "*.{js,jsx}": [
-      "eslint --fix",
-      "git add"
-    ]
   },
   "engines": {
     "node": ">=8.0.0"
